@@ -1,16 +1,41 @@
-# React + Vite
+# Tienda de Libros — Semana 4 (PFY2202)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación React que consume una **API REST mock** con [Mock Service Worker (MSW)](https://mswjs.io/) para explorar categorías de libros, con navegación mediante **React Router**.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Mock REST con MSW (`GET /api/categories`, `GET /api/books?genre=...`), activo solo en desarrollo.
+- Navegación con React Router: home con categorías, vista por categoría y página 404.
+- Indicador de carga en cada petición.
+- Manejo de errores con mensajes claros, botón de reintento y opción de volver al inicio.
+- Optimización: caché en memoria para no repetir consultas y `AbortController` para cancelar peticiones obsoletas.
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18+
 
-## Expanding the Oxlint configuration
+## Ejecutar en desarrollo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+npm install
+npm run dev
+```
+
+Abrir http://localhost:5173
+
+## Build de producción
+
+```bash
+npm run build
+```
+
+## Estructura
+
+```
+src/
+├── mocks/        # MSW: datos, handlers y worker
+├── services/     # Cliente fetch + caché en memoria
+├── hooks/        # useFetch: estados de carga/error y reintento
+├── components/   # Navbar, LoadingSpinner, ErrorMessage
+└── pages/        # HomePage, CategoryPage, NotFoundPage
+```
