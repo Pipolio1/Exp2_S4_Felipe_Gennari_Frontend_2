@@ -2,6 +2,8 @@
 
 Aplicación React que consume una **API REST mock** con [Mock Service Worker (MSW)](https://mswjs.io/) para explorar categorías de libros, con navegación mediante **React Router**.
 
+**Demo en vivo:** https://pipolio1.github.io/Exp2_S4_Felipe_Gennari_Frontend_2/
+
 ## Características
 
 - Mock REST con MSW (`GET /api/categories`, `GET /api/books?genre=...`), activo solo en desarrollo.
@@ -28,6 +30,15 @@ Abrir http://localhost:5173
 ```bash
 npm run build
 ```
+
+## Desplegar en GitHub Pages
+
+```bash
+npm run deploy
+```
+
+Publica `dist/` en la rama `gh-pages`. El mock de MSW también funciona en
+producción, por lo que la demo responde las solicitudes de `/api` sin backend.
 
 ## Estructura
 
