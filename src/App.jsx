@@ -6,7 +6,7 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Navbar />
       <main className="container">
         <Routes>
